@@ -158,6 +158,7 @@ _fzf_git_branches() {
     --no-hscroll \
     --bind 'ctrl-/:change-preview-window(down,70%|hidden|)' \
     --bind "ctrl-o:execute-silent:bash $__fzf_git branch {}" \
+    --bind "enter:become(git switch {1} > /dev/tty)" \
     --bind "alt-a:change-prompt(🌳 All branches> )+reload:bash \"$__fzf_git\" all-branches" \
     --preview 'git log --oneline --graph --date=short --color=always --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1)' "$@" |
   sed 's/^..//' | cut -d' ' -f1
